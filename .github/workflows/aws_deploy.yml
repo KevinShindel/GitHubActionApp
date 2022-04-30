@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Create zip deployment pkg
-      - run: zip -r ${{DEPLOY_PKG_NAME}} ./ -x *.git*
+        run: zip -r ${{DEPLOY_PKG_NAME}} ./ -x *.git*
 
       - name: Show files
-      - run: ls -lah
+        run: ls -lah
