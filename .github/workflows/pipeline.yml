@@ -24,5 +24,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
       - name: Show files
         run: ls  -lah
+
+      - name: Create env
+        run:  |
+        virtualenv venv
+        source venv/bina/activate
+        pip install -r requirements.txt
+        python app.py
