@@ -1,0 +1,31 @@
+name: CI-CD-Pipeline-2-AWS-Beanstalk
+
+env:
+  EB_PACKAGE_S3_BUCKET_NAME: "github-beanstalk-bucket"
+  EB_APP_NAME: "MyFlaskApp"
+  EB_ENV_NAME: "Myflaskapp-env"
+  DEPLOY_PKG_NAME: "flask_app_${{ github.sha }}.zip"
+  AWS_REGION_NAME: "us-west-2"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Gi clone repository
+      - uses: actions/checkout@v1
+
+      - name: Create zip deployment pkg
+      - run: zip -r ${{DEPLOY_PKG_NAME}} ./ -x *.git*
+
+      -name: Show files
+      - run: ls -lah
