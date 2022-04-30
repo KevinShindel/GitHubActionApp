@@ -27,5 +27,5 @@ jobs:
       - name: Create zip deployment pkg
       - run: zip -r ${{DEPLOY_PKG_NAME}} ./ -x *.git*
 
-      -name: Show files
+      - name: Show files
       - run: ls -lah
